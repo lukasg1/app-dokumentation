@@ -103,7 +103,26 @@
                                  % (scrreprt) und anderen Paketen her
 
 \usepackage{float}
-                                 
+                    
+
+\usepackage{listings} % Paket für die Darstellung von Code
+\usepackage{xcolor}   % Paket für Farbdefinitionen
+
+\lstdefinestyle{mystyle}{
+    basicstyle=\ttfamily\small,     % Schriftart und -größe des Codes
+    breakatwhitespace=false,        % Zeilenumbrüche nur bei Leerzeichen
+    breaklines=true,                % Zeilenumbrüche erlauben
+    captionpos=b,                   % Position der Beschriftung (bottom)
+    keepspaces=true,                % Leerzeichen beibehalten
+    showspaces=false,               % Leerzeichen nicht anzeigen
+    showstringspaces=false,         % Leerzeichen in Strings nicht anzeigen
+    showtabs=false,                 % Tabs nicht anzeigen
+    tabsize=2                       % Größe der Tabs
+}
+
+\lstset{style=mystyle}
+
+
 % Anpassung der Abstände bei Kapitelüberschriften
 % (betrifft auch Inhalts-, Abbildungs- und Tabellenverzeichnis)
 \renewcommand*\chapterheadstartvskip{\vspace*{-\topskip}}
