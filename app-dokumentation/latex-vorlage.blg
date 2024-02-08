@@ -1,9 +1,9 @@
 [0] Config.pm:307> INFO - This is Biber 2.19
 [0] Config.pm:310> INFO - Logfile is 'latex-vorlage.blg'
-[146] biber:340> INFO - === Sun Feb  4, 2024, 19:24:49
-[174] Biber.pm:419> INFO - Reading 'latex-vorlage.bcf'
-[327] Biber.pm:979> INFO - Found 0 citekeys in bib section 0
-[346] bbl.pm:660> INFO - Writing 'latex-vorlage.bbl' with encoding 'UTF-8'
-[347] bbl.pm:763> INFO - Output to latex-vorlage.bbl
-[347] Biber.pm:131> WARN - The file 'latex-vorlage.bcf' does not contain any citations!
-[347] Biber.pm:133> INFO - WARNINGS: 1
+[121] biber-MSWIN64:340> INFO - === 
+[173] Biber.pm:419> INFO - Reading 'latex-vorlage.bcf'
+[298] Biber.pm:979> INFO - Found 0 citekeys in bib section 0
+[323] bbl.pm:660> INFO - Writing 'latex-vorlage.bbl' with encoding 'UTF-8'
+[324] bbl.pm:763> INFO - Output to latex-vorlage.bbl
+[325] Biber.pm:131> WARN - The file 'latex-vorlage.bcf' does not contain any citations!
+[325] Biber.pm:133> INFO - WARNINGS: 1

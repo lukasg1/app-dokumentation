@@ -17,7 +17,10 @@
 \contentsline {section}{\numberline {3.1}Aufbau des Backends}{4}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Beschreibung der verwendeten Services}{4}{section.3.2}%
 \contentsline {section}{\numberline {3.3}Beschreibung der verwendeten APIs}{4}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Anleitung zum Starten der Applikation}{4}{section.3.4}%
-\contentsline {chapter}{\numberline {4}Aufteilung des Projektes}{5}{chapter.4}%
-\contentsline {chapter}{\numberline {5}Zusammenfassung und Ausblick}{6}{chapter.5}%
-\contentsline {chapter}{Anhang}{7}{chapter*.5}%
+\contentsline {subsection}{\numberline {3.3.1}BoardGameGeek XML API}{4}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}MongoDB API}{5}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Verwendung der API im Projekt selbst}{6}{subsection.3.3.3}%
+\contentsline {section}{\numberline {3.4}Anleitung zum Starten der Applikation}{6}{section.3.4}%
+\contentsline {chapter}{\numberline {4}Aufteilung des Projektes}{7}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Zusammenfassung und Ausblick}{8}{chapter.5}%
+\contentsline {chapter}{Anhang}{9}{chapter*.5}%
