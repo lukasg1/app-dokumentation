@@ -1,5 +1,29 @@
 \chapter{Technische Umsetzung}
-\section{Aufbau des Backends}
+\section{Beschreibung der App}
+\subsection{Funktionen der jeweiligen Seiten}
+\subsubsection{Homepage}
+Die Homepage der App zeigt ein zufälliges und derzeit besonders beliebtes Spiel an, welches von der BoardGameGeek \ac{API} bezogen wird.
+Die Generierung erfolgt automatisch und bei jedem Aufruf der Seite neu. Daher wird dieser Fähigkeit in der \texttt{ngOnInit()}-Funktion auf der Homepage aufgerufen.
+Darüber hinaus dient die Homepage primär als Ausgangspunkt für die Navigation zu den anderen Seiten (siehe Tab. \ref{tab:homepage}).
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Funktion} & \textbf{Beschreibung} \\
+        \hline
+        \texttt{goToSearch()} & Navigiere zur Suchleiste. \\
+        \texttt{goToWishlist()} & Navigiere zur Wunschliste. \\
+        \texttt{goToInventory()} & Navigiere zum Inventar. \\
+        \texttt{openGameDetails()} & Navigiere zur Infopage des zufälligen Spiels. \\
+        \hline
+    \end{tabular}
+    \caption{Funktionen der Homepage.}
+    \label{tab:homepage}
+\end{table}
+
+\subsubsection{Searchpage}
+\subsubsection{Infopage}
+\subsection{Genutzte Interfaces und Modelle}
 \section{Beschreibung der verwendeten Services}
 
 
