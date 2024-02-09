@@ -8,28 +8,43 @@
 \contentsline {section}{\numberline {1.3}Arbeitspakete}{2}{section.1.3}%
 \contentsline {chapter}{\numberline {2}User Interface Konzept}{3}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Allgemeines und Funktionalität}{3}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Beschreibung der erstellten Mockups}{4}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Homepage}{4}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Searchpage}{4}{subsection.2.2.2}%
-\contentsline {subsection}{\numberline {2.2.3}Infopage}{4}{subsection.2.2.3}%
-\contentsline {subsection}{\numberline {2.2.4}Wunschliste}{4}{subsection.2.2.4}%
-\contentsline {subsection}{\numberline {2.2.5}Inventar}{4}{subsection.2.2.5}%
-\contentsline {chapter}{\numberline {3}Technische Umsetzung}{5}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Beschreibung der App}{5}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Funktionen der jeweiligen Seiten}{5}{subsection.3.1.1}%
-\contentsline {subsubsection}{\nonumberline Homepage}{5}{subsubsection*.6}%
-\contentsline {subsubsection}{\nonumberline Searchpage}{5}{subsubsection*.8}%
-\contentsline {subsubsection}{\nonumberline Infopage}{5}{subsubsection*.10}%
-\contentsline {subsection}{\numberline {3.1.2}Genutzte Interfaces und Modelle}{5}{subsection.3.1.2}%
-\contentsline {subsubsection}{\nonumberline Boardgame}{6}{subsubsection*.12}%
-\contentsline {subsubsection}{\nonumberline Game}{6}{subsubsection*.14}%
-\contentsline {subsubsection}{\nonumberline Randomtopgame}{7}{subsubsection*.16}%
-\contentsline {section}{\numberline {3.2}Beschreibung der verwendeten Services}{7}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Beschreibung der verwendeten APIs}{7}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}BoardGameGeek XML API}{7}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}MongoDB API}{10}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Verwendung der APIs im Projekt selbst}{10}{subsection.3.3.3}%
-\contentsline {section}{\numberline {3.4}Anleitung zum Starten der Applikation}{11}{section.3.4}%
-\contentsline {chapter}{\numberline {4}Aufteilung des Projektes}{12}{chapter.4}%
-\contentsline {chapter}{\numberline {5}Zusammenfassung und Ausblick}{13}{chapter.5}%
-\contentsline {chapter}{Anhang}{14}{chapter*.17}%
+\contentsline {section}{\numberline {2.2}HTML-Dokumentation}{3}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Einführung}{3}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Allgemeine Beobachtungen}{4}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Details zu den Seiten}{4}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Besondere Merkmale}{4}{subsection.2.2.4}%
+\contentsline {section}{\numberline {2.3}SCSS-Dokumentation}{4}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Einführung}{4}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Allgemeine Designentscheidungen}{5}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Spezifische Designelemente}{5}{subsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.3.4}Begründung der Designentscheidungen}{5}{subsection.2.3.4}%
+\contentsline {section}{\numberline {2.4}TypeScript-Dokumentation}{6}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Einführung}{6}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Komponenten und Importe}{6}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}Komponentendefinition}{6}{subsection.2.4.3}%
+\contentsline {subsection}{\numberline {2.4.4}Funktionalität}{6}{subsection.2.4.4}%
+\contentsline {subsection}{\numberline {2.4.5}Zusätzliche Hinweise}{6}{subsection.2.4.5}%
+\contentsline {subsection}{\numberline {2.4.6}Erweiterungen}{6}{subsection.2.4.6}%
+\contentsline {subsection}{\numberline {2.4.7}Beispiel}{7}{subsection.2.4.7}%
+\contentsline {section}{\numberline {2.5}Beschreibung der erstellten Mockups}{7}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Änderungen und Anpassungen}{7}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}Unveränderte Elemente}{8}{subsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.5.3}Fazit}{8}{subsection.2.5.3}%
+\contentsline {chapter}{\numberline {3}Technische Umsetzung}{10}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Beschreibung der App}{10}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Funktionen der jeweiligen Seiten}{10}{subsection.3.1.1}%
+\contentsline {subsubsection}{\nonumberline Homepage}{10}{subsubsection*.7}%
+\contentsline {subsubsection}{\nonumberline Searchpage}{10}{subsubsection*.9}%
+\contentsline {subsubsection}{\nonumberline Infopage}{11}{subsubsection*.11}%
+\contentsline {subsection}{\numberline {3.1.2}Genutzte Interfaces und Modelle}{12}{subsection.3.1.2}%
+\contentsline {subsubsection}{\nonumberline Boardgame}{12}{subsubsection*.13}%
+\contentsline {subsubsection}{\nonumberline Game}{13}{subsubsection*.15}%
+\contentsline {subsubsection}{\nonumberline Randomtopgame}{13}{subsubsection*.17}%
+\contentsline {section}{\numberline {3.2}Beschreibung der verwendeten Services}{14}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Beschreibung der verwendeten APIs}{14}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}BoardGameGeek XML API}{14}{subsection.3.3.1}%
+\contentsline {subsubsection}{\nonumberline Suchfunktion}{14}{subsubsection*.19}%
+\contentsline {subsubsection}{\nonumberline Game of the Day}{15}{subsubsection*.21}%
+\contentsline {subsection}{\numberline {3.3.2}MongoDB API}{16}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Verwendung der APIs im Projekt selbst}{16}{subsection.3.3.3}%
+\contentsline {section}{\numberline {3.4}Anleitung zum Starten der Applikation}{17}{section.3.4}%

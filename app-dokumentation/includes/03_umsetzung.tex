@@ -11,18 +11,71 @@ Darüber hinaus dient die Homepage primär als Ausgangspunkt für die Navigation
         \hline
         \textbf{Funktion} & \textbf{Beschreibung} \\
         \hline
-        \texttt{goToSearch()} & Navigiere zur Suchleiste. \\
-        \texttt{goToWishlist()} & Navigiere zur Wunschliste. \\
-        \texttt{goToInventory()} & Navigiere zum Inventar. \\
-        \texttt{openGameDetails()} & Navigiere zur Infopage des zufälligen Spiels. \\
+        \texttt{goToHomepage()} & Navigiere zur Homepage. \\
+        \texttt{navigateToHome()} & Navigiere zur Homepage. \\
+        \texttt{navigateToInventory()} & Navigiere zum Inventar. \\
+        \texttt{navigateToWishlist()} & Navigiere zur Wunschliste. \\
+        \texttt{navigateToSearch()} & Navigiere zur Suchseite. \\
+        \texttt{navigateToItemDetail()} & Navigiere zur Infopage des ausgewählten Spiels. \\
         \hline
     \end{tabular}
     \caption{Funktionen der Homepage.}
     \label{tab:homepage}
 \end{table}
-
 \subsubsection{Searchpage}
+Die Searchpage repräsentiert die Suchleiste der App. Hier wird es dem Nutzer ermöglicht, Spiele anhand eines Suchbegriffs zu finden.
+Die Suchfunktion wird durch die \ac{API} bereitgestellt und liefert eine Liste von Spielen, welche dem übergebenen Suchbegriff entsprechen.
+Anhand einer Liste von Spielen kann der Nutzer dann ein Spiel auswählen, um daraufhin zur Infopage weitergeleitet zu werden.
+Auch hier ist es also wieder möglich, auf verschiedene Seiten zu navigieren.
+Darüber hinaus existiert eine Funktion, welche unendlich viele Spiele nachlädt, sobald der Nutzer das Ende der Liste erreicht hat (siehe Tab. \ref{tab:searchpage}).
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Funktion} & \textbf{Beschreibung} \\
+        \hline
+        \texttt{search()} & Suche nach Spielen anhand eines Suchbegriffs. \\
+        \texttt{onIonInfinite()} & Lade unendlich viele Spiele. \\
+        \texttt{goToHomepage()} & Navigiere zur Homepage. \\
+        \texttt{goToWishlist()} & Navigiere zur Wunschliste. \\
+        \texttt{goToInventory()} & Navigiere zum Inventar. \\
+        \texttt{openGameDetails()} & Navigiere zur Infopage des ausgewählten Spiels. \\
+        \hline
+    \end{tabular}
+    \caption{Funktionen der Searchpage.}
+    \label{tab:searchpage}
+\end{table}
 \subsubsection{Infopage}
+Die Infopage dient der detaillierten Anzeige von Informationen zu einem ausgewählten Spiel.
+Hierunter fallen bspw. der Name, das Erscheinungsjahr, die minimal erforderliche und maximal mögliche Anzahl an Spielern sowie die durchschnittliche Spieldauer.
+Genauere Informationen hierüber sind auch den Interfaces zu entnehmen.
+Darüber hinaus kann der Nutzer das der jeweiligen Infopage zugrundeliegende Spiel zu seiner Wunschliste oder seinem Inventar hinzufügen und es auch aus diesem wieder entfernen.
+Die Infopage verfügt im Allgemeinen über eine Vielzahl von Funktionen, da sie die zentrale Anlaufstelle für die Verwaltung von Spielen darstellt.
+So muss hier bspw. geprüft werden, ob ein Spiel bereits in der Wunschliste oder im Inventar enthalten ist, um die entsprechenden Buttons anzuzeigen (siehe Tab. \ref{tab:infopage}).
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Funktion} & \textbf{Beschreibung} \\
+        \hline
+        \texttt{addToWishlist()} & Füge das Spiel zur Wunschliste hinzu. \\
+        \texttt{loadGameDetails()} & Lade die detaillierten Informationen des Spiels. \\
+        \texttt{toggleWishlist()} & Ändere den Besitzstatus für die Wunschliste. \\
+        \texttt{toggleInventory()} & Ändere den Besitzstatus für das Inventar. \\
+        \texttt{addToWishlist()} & Füge das Spiel der Wunschliste hinzu. \\
+        \texttt{removeFromWishlist()} & Entferne das Spiel aus der Wunschliste. \\
+        \texttt{addToInventory()} & Füge das Spiel dem Inventar hinzu. \\
+        \texttt{removeFromInventory()} & Entferne das Spiel aus dem Inventar. \\
+        \texttt{navigateToHome()} & Navigiere zur Homepage. \\
+        \texttt{navigateToInventory()} & Navigiere zum Inventar. \\
+        \texttt{navigateToWishlist()} & Navigiere zur Wunschliste. \\
+        \texttt{navigateToSearch()} & Navigiere zur Suchseite. \\
+        \texttt{onIonInfinite()} & Lade unendlich viele Spiele. \\
+        \hline
+    \end{tabular}
+    \caption{Funktionen der Infopage.}
+    \label{tab:infopage}
+\end{table}
 \subsection{Genutzte Interfaces und Modelle}
 In der Welt der Softwareentwicklung ist es entscheidend, dass Daten, die zwischen verschiedenen
 Systemen ausgetauscht werden, klar definierte Strukturen haben. TypeScript-Interfaces sind hierbei
@@ -126,18 +179,14 @@ Eigenschaften definiert:
 \end{table}
 \section{Beschreibung der verwendeten Services}
 
-
 \section{Beschreibung der verwendeten APIs}
 \subsection{BoardGameGeek XML API }
-
 Die BoardGameGeek XML API bietet eine Schnittstelle zum Zugriff auf eine Vielzahl von Informationen rund um Brettspiele,
 die auf BoardGameGeek.com, einer umfangreichen Datenbank und Community für Brettspiel-Enthusiasten,
 verfügbar sind. Diese API ermöglicht es Entwicklern druch verschiedene Endpoints auf Spielinformationen,
 Benutzerkollektionen und Forendiskussionen zuzugreifen. Dabei zu beachten ist, dass die API die Antwort als XML-Format weitergibt. 
 Da häufig mit JSON gearbeitet wird ist eine mögliche Umformung der Daten sinnvoll.
-
-\large Suchfunktion
-
+\subsubsection{Suchfunktion}
 Eine der drei benutzten Endpunkte ist die `/xmlapi/search`-Funktion bei der Nutzer als Input einem spezifischen Suchterm eingeben.
 Als Ergebnis enthält man eine Liste an Brettspielen in XML Format, deren Namen oder Alias im Suchbegriff enthalten war.
 Die Suchfunktion Antwort enthält folgende Informationen:
@@ -146,22 +195,18 @@ Die Suchfunktion Antwort enthält folgende Informationen:
     \item {Name des Brettspiels}
     \item {Erscheinungsjahr des Brettspiels}
 \end{itemize}
-
 Die reale Ausgabe für den fiktiven Suchterm ``Frika'' würde somit folgendes zurückgeben: 
 \begin{figure}[h]
     \centering
     \includegraphics[width=1\textwidth]{graphics/Search_API.png}
-    \caption{Ergebnis der `/xmlapi/search`-Funktion bei Suchterm Frika}
+    \caption{Ergebnis der `/xmlapi/search`-Funktion bei Suchterm Frika.}
     \label{fig:Search_API}
 \end{figure}
-
- \large Detaillierte Spielinformationen
-
+\texttt{Detaillierte Spielinformationen}
 Der zweite Endpunkt ist die `/xmlapi/boardgame/<gameid>`-Funktion und dient dazu,
 detaillierte Informationen zu einem Brettspiel zu erhalten. Nutzer könnten hier noch einige weitere Parameter mitgeben um spezifische Informationen zu erhalten, jedoch ist dies in unserem Projekt nicht notwendig, da die Ergebnisse schon detailliert genug sind.
 Die gameId ist hierbei der Input, ist gleichzusetzen mit der objectId und kann aus des oben erhaltenen Ergebnisses der Suchfunktion entnommen werden.
 Die detaillierten Spielinformationen enthalten folgende Informationen:
-
 \begin{table}[H]
     \centering
     \begin{tabular}{|c|c|}
@@ -185,14 +230,11 @@ Die detaillierten Spielinformationen enthalten folgende Informationen:
         \texttt{usersRated} & \texttt{String} \\
         \hline
     \end{tabular}
-    \caption{Die zurückgegebenen detaillierten Informationen}
+    \caption{Die zurückgegebenen detaillierten Informationen.}
     \label{tab:boardgame_properties}
 \end{table}
-
 Es ist zu erkennen, dass der Name und der Publisher Arrays sind. Dies lässt sich darauf zurückführen, dass es mehrere Namen für dasselbe Spiel gibt (teilweise auch in anderen Sprachen) und mehrere Entwicklet beteiligt sein können.
-
-\large Game of the Day
-
+\subsubsection{Game of the Day}
 Der dritte Endpunkt im Bunde ist die `xmlapi2/hotoverall`-Funktion. Sie gibt die top 50 Spiele mit besonders guter Bewertung und Beliebtheit zurück.
 Dabei werden genau fünf unterschiedliche Informationen aufgeführt:
 \setlength{\itemsep}{-1pt}
@@ -204,27 +246,24 @@ Dabei werden genau fünf unterschiedliche Informationen aufgeführt:
     \item name:  String        
     \item yearpublished 
 \end{itemize}
-
 Im Anschluss kann ebenfalls mit der ObjectId eine Anfrage für detaillierte Informationen gestartet werden. 
 Einsatz findet dieses Verfahren wenn mit einem Klick das Game of the Day ausgewählt wird und somit die zurückgegebene ObjectId auf die Infopage
 weitergeleitet wird. Somit konnte eine weitere Seite wiederverwendet werden und zudem ein neues Feature für die App ermöglicht. 
-
 \subsection{MongoDB API}
-
 In diesem Teil wird nur der externe Aufruf auf den selbsterstellten MongoDB API-Endpunkt behandelt. 
 Der Interne Aufbau der MongoDB wird in der Beschreibung der App aufgeführt. Es gibt insgesamt drei Zugriffsmethoden für jede Collection auf die MongoDB: 
-searchGamesWishlist(), searchGamesInventory(), addToWishlist(gameData), addToInventory(gameData), removeFromWishlist(objectId), removeFromInventory(objectId)\bigskip
-
-
-Die Get Methode, hier searchGames..., bezieht sich af den HTTP Endpoint 
-
+\texttt{searchGamesWishlist()},
+\texttt{searchGamesInventory()},
+\texttt{addToWishlist(gameData)},
+\texttt{addToInventory(gameData)},
+\texttt{removeFromWishlist(objectId)},
+\texttt{removeFromInventory(objectId)}\bigskip
+Die GET-Methode, hier searchGames..., bezieht sich af den HTTP Endpoint 
 ``http://localhost:8999/wishlisht'' oder beziehungsweise ``\ldots/inventory'' und liefert eine Liste aus JSON-Elementen zurück.
-Für das hinzufügen von Brettspielen wird die HTTPClient Methode POST benutzt und die gameData übergeben, wobei Gamedata ein Objekt des Modells Boardgame.ts ist. 
+Für das Hinzufügen von Brettspielen wird die HTTPClient Methode POST benutzt und die gameData übergeben, wobei Gamedata ein Objekt des Modells Boardgame.ts ist. 
 Dieses Objekt wird dann in eine JSON Form in die ausgewählte collection hinzugefügt. Bei der Entfernung eines Spiels wird als Parameter die ObjectId des Spiels übergeben.
 Dieser einzigartige Klassifikator sorgt dafür, dass wenn ein Spiel in der Collection enthalten ist, dass diese ObjectId als Klassifikator verwendet, wird dieses Brettspiel entfernt.
-Des Weiteren ist dies aus Effizienz gründen vorteilhaft, da kein komplettes Objekt übergeben wird, geparsed werden muss und schlussendlich verglichen. Es kann direkt eine Überprüfung statt finden.
-
-
+Des Weiteren ist dies aus Effizienzgründen vorteilhaft, da kein komplettes Objekt übergeben wird, geparsed werden muss und schlussendlich verglichen. Eine Überprüfung kann direkt stattfinden.
 \begin{center}
     \begin{lstlisting}[caption={Löschaufruf der MongoDB API}, label=lst:jscode]
     this.http.delete(`${this.inventoryUrl}/${objectId}`)

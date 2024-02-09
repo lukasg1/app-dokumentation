@@ -3,10 +3,10 @@
 \contentsline {table}{\numberline {1}{\ignorespaces Zuweisung der Arbeitspakete.}}{2}{table.1.1}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {2}{\ignorespaces Funktionen der Homepage.}}{5}{table.3.2}%
-\contentsline {table}{\numberline {3}{\ignorespaces Eigenschaften des \texttt {Boardgame} Interfaces.}}{6}{table.3.3}%
-\contentsline {table}{\numberline {4}{\ignorespaces Eigenschaften des \texttt {Game} Interfaces.}}{7}{table.3.4}%
-\contentsline {table}{\numberline {5}{\ignorespaces Eigenschaften des \texttt {Randomtopgame} Interfaces.}}{7}{table.3.5}%
-\contentsline {table}{\numberline {6}{\ignorespaces Die zurückgegebenen detaillierten Informationen}}{9}{table.3.6}%
-\addvspace {10\p@ }
-\addvspace {10\p@ }
+\contentsline {table}{\numberline {2}{\ignorespaces Funktionen der Homepage.}}{10}{table.3.2}%
+\contentsline {table}{\numberline {3}{\ignorespaces Funktionen der Searchpage.}}{11}{table.3.3}%
+\contentsline {table}{\numberline {4}{\ignorespaces Funktionen der Infopage.}}{11}{table.3.4}%
+\contentsline {table}{\numberline {5}{\ignorespaces Eigenschaften des \texttt {Boardgame} Interfaces.}}{13}{table.3.5}%
+\contentsline {table}{\numberline {6}{\ignorespaces Eigenschaften des \texttt {Game} Interfaces.}}{13}{table.3.6}%
+\contentsline {table}{\numberline {7}{\ignorespaces Eigenschaften des \texttt {Randomtopgame} Interfaces.}}{14}{table.3.7}%
+\contentsline {table}{\numberline {8}{\ignorespaces Die zurückgegebenen detaillierten Informationen.}}{15}{table.3.8}%
