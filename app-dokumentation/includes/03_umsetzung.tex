@@ -24,6 +24,106 @@ Darüber hinaus dient die Homepage primär als Ausgangspunkt für die Navigation
 \subsubsection{Searchpage}
 \subsubsection{Infopage}
 \subsection{Genutzte Interfaces und Modelle}
+In der Welt der Softwareentwicklung ist es entscheidend, dass Daten, die zwischen verschiedenen
+Systemen ausgetauscht werden, klar definierte Strukturen haben. TypeScript-Interfaces sind hierbei
+äußerst nützlich, insbesondere wenn es um die Interaktion mit APIs geht.
+Das Boardgame Interface beschreibt alle wesentlichen Informationen eines Brettspiels, die über die
+BGG-API abgerufen werden und in einer MongoDB gespeichert werden. Dazu gehören Details wie der
+eindeutige Identifikator des Spiels, das Veröffentlichungsjahr, die Spieleranzahl, die Spieldauer, das
+empfohlene Alter, eine Beschreibung und ein Vorschaubild. Dieses Interface stellt sicher, dass die von
+der API gelieferten Daten vollständig und in einer korrekten Form sind, die direkt in der Datenbank
+gespeichert werden kann (so dass auch Falls kein Bild in der Api Verfügbar ist dies abgespeichert
+wird).
+Das Game Interface hingegen ist eine reduzierte Version des Boardgame Interfaces. Es kann in
+Situationen eingesetzt werden, in denen nicht alle Informationen eines Brettspiels benötigt werden,
+wie zum Beispiel in einer Übersichtsliste von Spielen. Durch das Weglassen von Details wie Spielzeit
+oder Altersangabe wird die übertragene Datenmenge verringert, was die Effizienz verbessern und die
+Ladezeiten verkürzen kann.
+Das Randomgame Interface ist spezialisiert auf die Darstellung eines zufällig ausgewählten Spiels aus
+den Top 50 der am besten bewerteten Brettspiele. Neben der Standardinformation wie Identifikator,
+Name, Veröffentlichungsjahr und einem Bild des Spiels, speichert dieses Interface zusätzlich den Rang
+des Spiels, also seine Position in der Rangliste. Diese Information ist besonders wertvoll, um auf einen
+Blick die Beliebtheit eines Spiels einschätzen zu können, diese wird basierend auf ihrer Position in der
+Top 50 eingelesen.
+Diese Interfaces sind essenzielle Bausteine für die zuverlässige Datenarchitektur. Sie sorgen nicht nur
+für eine korrekte Typisierung und eine klare Vertragsgestaltung zwischen dem Backend (der API) und
+dem Frontend, sondern tragen auch dazu bei, den Datenfluss übersichtlich und wartbar zu halten. So
+kann die Software sich an verändernde Anforderungen anpassen, ohne dass es zu einem
+Durcheinander in der Datenstruktur kommt.
+
+\subsubsection{Boardgame}
+Das \texttt{Boardgame} Interface repräsentiert die Struktur zur Speicherung von Informationen über ein
+Brettspiel. Die Eigenschaften sind wie folgt:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{Eigenschaft} & \textbf{Typ} & \textbf{Beschreibung} \\
+        \hline
+        \texttt{objectId} & \texttt{string} & Dient der eindeutigen Identifikation eines Spiels. \\
+        \texttt{yearPublished} & \texttt{string} & Das Jahr, in dem das Spiel veröffentlicht wurde. \\
+        \texttt{minPlayers} & \texttt{string} & Die minimal erforderliche Anzahl an Spielern. \\
+        \texttt{maxPlayers} & \texttt{string} & Die maximal mögliche Anzahl an Spielern. \\
+        \texttt{playingTime} & \texttt{string} & Die durchschnittliche Spieldauer. \\
+        \texttt{minPlayTime} & \texttt{string} & Die minimal mögliche Spieldauer. \\
+        \texttt{maxPlayTime} & \texttt{string} & Die maximal mögliche Spieldauer. \\
+        \texttt{age} & \texttt{string} & Die empfohlene Altersangabe. \\
+        \texttt{description} & \texttt{string} & Eine Beschreibung des Spiels. \\
+        \texttt{name} & \texttt{string[]} & Eine Liste von Namen, unter denen das Spiel bekannt ist. \\
+        \texttt{publisher} & \texttt{string[]} & Eine Liste von Verlagen, die das Spiel veröffentlicht haben. \\
+        \texttt{averageWeight} & \texttt{string} & Die durchschnittliche Komplexität des Spiels. \\
+        \texttt{averageRating} & \texttt{string} & Die durchschnittliche Bewertung des Spiels. \\
+        \texttt{thumbnail} & \texttt{string} & Ein Link zu einem Vorschaubild des Spiels. \\
+        \texttt{usersRated} & \texttt{string} & Die Anzahl der Benutzer, die das Spiel bewertet haben. \\
+        \hline
+    \end{tabular}
+    \caption{Eigenschaften des \texttt{Boardgame} Interfaces.}
+    \label{tab:boardgame}
+\end{table}
+
+\subsubsection{Game}
+Das \texttt{Game} Interface repräsentiert eine reduzierte Version des \texttt{Boardgame} Interfaces. Es
+wird verwendet, um die Datenmenge zu verringern, wenn nicht alle Informationen eines Spiels
+benötigt werden. Die Eigenschaften sind hierbei wie folgt:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{Eigenschaft} & \textbf{Typ} & \textbf{Beschreibung} \\
+        \hline
+        \texttt{objectId} & \texttt{string} & Dient der eindeutigen Identifikation eines Spiels. \\
+        \texttt{name} & \texttt{string} & Gibt den Namen des Spiels an. \\
+        \texttt{yearPublished} & \texttt{string} & Das Jahr, in dem das Spiel veröffentlicht wurde. \\
+        \texttt{thumbnail} & \texttt{string} & Ein Link zu einem Vorschaubild des Spiels. \\
+        \hline
+    \end{tabular}
+    \caption{Eigenschaften des \texttt{Game} Interfaces.}
+    \label{tab:game}
+\end{table}
+\textbf{Hinweis:} Es gibt zwei Versionen des \texttt{Game} Interfaces, eine mit der Eigenschaft „thumbnail“ und eine
+ohne. Es ist wichtig sicherzustellen, dass die richtige Version verwendet wird, um der erforderlichen
+Datenstruktur für die Anwendung zu entsprechen.
+
+\subsubsection{Randomtopgame}
+Das \texttt{Randomtopgame} Interface repräsentiert die Struktur zur Speicherung von Informationen über ein
+zufällig ausgewähltes Spiel aus den Top 50 der am besten bewerteten Brettspiele. Hierfür werden folgende
+Eigenschaften definiert:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{Eigenschaft} & \textbf{Typ} & \textbf{Beschreibung} \\
+        \hline
+        \texttt{id} & \texttt{string} & Dient der eindeutigen Identifikation eines Spiels. \\
+        \texttt{name} & \texttt{string} & Der Name des Spiels. \\
+        \texttt{yearPublished} & \texttt{string} & Das Jahr, in dem das Spiel veröffentlicht wurde. \\
+        \texttt{thumbnail} & \texttt{string} & Ein Link zu einem Vorschaubild des Spiels. \\
+        \texttt{rank} & \texttt{string} & Die Position des Spiels in der Rangliste. \\
+        \hline
+    \end{tabular}
+    \caption{Eigenschaften des \texttt{Randomtopgame} Interfaces.}
+    \label{tab:randomtopgame}
+\end{table}
 \section{Beschreibung der verwendeten Services}
 
 
