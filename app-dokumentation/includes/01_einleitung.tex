@@ -1,6 +1,12 @@
 \chapter{Einleitung}
 \section{Motivation}
-
+Die fortschreitende Digitalisierung hat in den letzten Jahren zu einem starken Wandel in der individuellen Freizeitgestaltung geführt. So konnten
+sich Streaming-Dienste und Videospiele als eine beliebte Form der Freizeitbeschäftigung etablieren.
+Dennoch erfreuen sich auch Brett-, Karten- und Würfelspiele nach wie vor einer großen Beliebtheit.
+Gründe hierfür liegen vor allem darin, dass analoge Spiele soziales Miteinander fördern und eine willkommene Abwechslung zu digitalen Medien darstellen.
+Dabei kann es jedoch schwierig sein, ein passendes Spiel zu finden, welches den eigenen Vorlieben entspricht.
+Ebenso kann es bei zunehmendem Bestand an Spielen kompliziert werden, den Überblick zu behalten, welche Spiele
+derzeit in Besitz sind und welche für einen künftige Anschaffung in Frage kommen.
 \section{Zielsetzung}
 Zur Unterstützung soll daher im Rahmen des Moduls „Software Engineering“, welche als Prüfungsleistung die Entwicklung einer mobilen Applikation vorsieht,
 eine Ionic-App erstellt werden, welche die Suche und Verwaltung von Brettspielen ermöglicht. Im Kern soll die App über folgende
@@ -13,3 +19,29 @@ Funktionalitäten verfügen:
     \item \textbf{Vergabe von Bewertungen zu Spielen:} Dem Nutzer soll es auch ermöglicht werden, eine eigene Bewertung für jedes Spiel abgeben zu können. Diese Funktion soll annhand eines 5-Sterne-Systems realisiert werden.
 \end{itemize}
 Der Nutzer soll sich zwischen den Seiten der App frei bewegen können. Die App soll dabei eine übersichtliche und intuitive Benutzeroberfläche bieten, welche die Funktionalitäten der App klar darstellt und eine einfache Bedienung ermöglicht.
+\section{Arbeitspakete}
+Um eine bessere Organisation des Entwicklungsprozesses zu gewährleisten, wird das Projekt in verschiedene Arbeitspakete unterteilt. Zu diesen zählen:
+\begin{enumerate}
+    \item \textbf{UI-Design:} Hier soll das Design der App gestaltet werden. Hierunter fallen bspw. die Gestaltung der Farbgebung, Schriftarten und Icons.
+    \item \textbf{API-Integration:} In diesem Paket soll die Anbindung eines externen „\ac{API}“ realisiert werden, welches die Daten zu den Spielen bereitstellt. Die Formatierung der Daten soll dabei der Struktur der Datenbank entsprechen.
+    \item \textbf{MongoDB-Setup:} In diesem Paket soll die Datenbank für die App eingerichtet werden. Hierunter fallen primär die Erstellung der Datenbank, die Einrichtung der Collections und das Schreiben von Fuktionen, welche Abrufe (GET), Einfügungen (POST) und Löschungen (DELETE) von Daten ermöglichen.
+    \item \textbf{Suchfunktions-Implementierung:} Hierbei wird die Suchfunktion für die App konzipiert und implementiert. Die Suchfunktion soll dabei die durch die \ac{API} bereitgestellten Informationen nach den eingegebenen Suchbegriffen durchsuchen und die passenden Ergebnisse zurückgeben. Selbiges soll auch für die Elemente in der eigenen Datenbank ermöglicht werden.
+\end{enumerate}
+Um eine annähernd gleichmäßige Verteilung der Arbeitspakete zu gewährleisten, wird jedem Teammitglied ein Arbeitspaket zugewiesen (siehe Tab. \ref{tab:arbeitspakete}).
+Für größere Arbeitspakete ist zudem jeweils ein weiteres Teammitglied zur Unterstützung vorgesehen.
+In allen anderen Fällen erfolgt die Beihilfe zu den Tätigkeiten der hauptverantwortlichen Teammitglieder abhängig von der aktuellen Auslastung des jeweiligen Unterstützers.
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{Arbeitspaket} & \textbf{Teammitglied} & \textbf{Unterstützung} \\
+        \hline
+        UI-Design & Tim Keicher & auslastungsabhängig \\
+        API-Integration & Simon Spitzer & Simon Burbiel \\
+        MongoDB-Setup & Lukas Großerhode & Simon Spitzer \\
+        Suchfunktions-Implementierung & Simon Burbiel & auslastungsabhängig \\
+        \hline
+    \end{tabular}
+    \caption{Zuweisung der Arbeitspakete}
+    \label{tab:arbeitspakete}
+\end{table}
