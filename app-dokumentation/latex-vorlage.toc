@@ -1,7 +1,7 @@
 \babel@toc {ngerman}{}\relax 
-\contentsline {chapter}{Abkürzungsverzeichnis}{III}{chapter*.1}%
-\contentsline {chapter}{Abbildungsverzeichnis}{IV}{section*.2}%
-\contentsline {chapter}{Tabellenverzeichnis}{V}{section*.3}%
+\contentsline {chapter}{Abkürzungsverzeichnis}{IV}{chapter*.1}%
+\contentsline {chapter}{Abbildungsverzeichnis}{V}{section*.2}%
+\contentsline {chapter}{Tabellenverzeichnis}{VI}{section*.3}%
 \contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Motivation}{1}{section.1.1}%
 \contentsline {section}{\numberline {1.2}Zielsetzung}{1}{section.1.2}%
@@ -41,10 +41,19 @@
 \contentsline {subsubsection}{\nonumberline Game}{13}{subsubsection*.15}%
 \contentsline {subsubsection}{\nonumberline Randomtopgame}{13}{subsubsection*.17}%
 \contentsline {section}{\numberline {3.2}Beschreibung der verwendeten Services}{14}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Beschreibung der verwendeten APIs}{14}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}BoardGameGeek XML API}{14}{subsection.3.3.1}%
-\contentsline {subsubsection}{\nonumberline Suchfunktion}{14}{subsubsection*.19}%
-\contentsline {subsubsection}{\nonumberline Game of the Day}{15}{subsubsection*.21}%
-\contentsline {subsection}{\numberline {3.3.2}MongoDB API}{16}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Verwendung der APIs im Projekt selbst}{16}{subsection.3.3.3}%
-\contentsline {section}{\numberline {3.4}Anleitung zum Starten der Applikation}{17}{section.3.4}%
+\contentsline {section}{\numberline {3.3}Beschreibung der verwendeten APIs}{15}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}BoardGameGeek XML API}{15}{subsection.3.3.1}%
+\contentsline {subsubsection}{\nonumberline Suchfunktion}{15}{subsubsection*.19}%
+\contentsline {subsubsection}{\nonumberline Detaillierte Spielinformationen}{15}{subsubsection*.21}%
+\contentsline {subsubsection}{\nonumberline Game of the Day}{16}{subsubsection*.23}%
+\contentsline {subsection}{\numberline {3.3.2}MongoDB API}{17}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Verwendung der APIs im Projekt selbst}{17}{subsection.3.3.3}%
+\contentsline {section}{\numberline {3.4}Beschreibung der Docker-Umgebung}{18}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}MongoDB-Datenbank}{18}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Mongo-Express}{18}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Server}{19}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.4.4}Proxy-Server}{19}{subsection.3.4.4}%
+\contentsline {subsection}{\numberline {3.4.5}Volumes}{19}{subsection.3.4.5}%
+\contentsline {subsection}{\numberline {3.4.6}Zusammenfassung}{19}{subsection.3.4.6}%
+\contentsline {section}{\numberline {3.5}Beschreibung des Proxys und des externen Routings}{19}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Anleitung zum Starten der Applikation}{20}{section.3.6}%

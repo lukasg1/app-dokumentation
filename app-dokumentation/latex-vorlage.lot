@@ -9,4 +9,5 @@
 \contentsline {table}{\numberline {5}{\ignorespaces Eigenschaften des \texttt {Boardgame} Interfaces.}}{13}{table.3.5}%
 \contentsline {table}{\numberline {6}{\ignorespaces Eigenschaften des \texttt {Game} Interfaces.}}{13}{table.3.6}%
 \contentsline {table}{\numberline {7}{\ignorespaces Eigenschaften des \texttt {Randomtopgame} Interfaces.}}{14}{table.3.7}%
-\contentsline {table}{\numberline {8}{\ignorespaces Die zurückgegebenen detaillierten Informationen.}}{15}{table.3.8}%
+\contentsline {table}{\numberline {8}{\ignorespaces Funktionen des \texttt {BoardgameService}.}}{14}{table.3.8}%
+\contentsline {table}{\numberline {9}{\ignorespaces Die zurückgegebenen detaillierten Informationen.}}{16}{table.3.9}%

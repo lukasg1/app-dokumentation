@@ -178,7 +178,39 @@ Eigenschaften definiert:
     \label{tab:randomtopgame}
 \end{table}
 \section{Beschreibung der verwendeten Services}
-
+Als primärer Service für die Anwendung dient der \texttt{BoardgameService}. Dieser Service ist für die
+Kommunikation mit der BoardGameGeek \ac{API} verantwortlich und ermöglicht den Zugriff auf die
+MongoDB-Datenbank. Der Service stellt viele Funktionen bereit, die überwiegend
+\texttt{Observable}-Objekte zurückgeben und Änderungen, Ergänzungen und Löschungen dort befindlicher Einträge
+ermöglichen. Im Rahmen dieses Projektes existieren zwei Collections, die von diesem Service
+verwaltet werden: \texttt{Wishlist} und \texttt{Inventory}. Die Funktionen des \texttt{BoardgameService} sind in Tab. \ref{tab:boardgame_service} aufgeführt.
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Funktion} & \textbf{Beschreibung} \\
+        \hline
+        \texttt{getWishlist} & GET-Anfrage für die Wunschliste. \\
+        \texttt{addToWishlist} & POST-Anfrage für das Hinzufügen zur Wunschliste. \\
+        \texttt{addToInventory} & POST-Anfrage für das Hinzufügen zum Inventar. \\
+        \texttt{removeFromWishlist} & DELETE-Anfrage für das Entfernen aus der Wunschliste. \\
+        \texttt{removeFromInventory} & DELETE-Anfrage für das Entfernen aus dem Inventar. \\
+        \texttt{searchGames} & GET-Anfrage für die Suche nach Spielen. \\
+        \texttt{getRandomTopGame} & GET-Anfrage für ein zufälliges Top-Spiel. \\
+        \texttt{searchGamesWishlist} & Suchfunktion für die Wunschliste. \\
+        \texttt{searchGamesInventory} & Suchfunktion für das Inventar. \\
+        \texttt{getDetailInformation} & Abrufen detaillierter Informationen zu einem Spiel. \\
+        \hline
+    \end{tabular}
+    \caption{Funktionen des \texttt{BoardgameService}.}
+    \label{tab:boardgame_service}
+\end{table}
+Vorab werden die benötigten URLs instanziiert, um Anfragen an die API senden zu können.
+Darüber hinaus werden zwei String-Arrays für die Wunschliste und das Inventar erstellt, um den aktuellen Stand
+hinsichtlich des Vorhandenseins von Spielen zu speichern. Die Funktionen \texttt{searchGames()},
+\texttt{getRandomTopGame()} und \texttt{getDetailInformation} senden Anfragen an die BoardGameGeek \ac{API} und konvertieren die erhaltenen Daten
+von XML in JSON. Die eindeutige Identifikation der Spiele erfolgt dabei über die \texttt{objectId} des
+\texttt{Boardgame} Intefaces.
 \section{Beschreibung der verwendeten APIs}
 \subsection{BoardGameGeek XML API }
 Die BoardGameGeek XML API bietet eine Schnittstelle zum Zugriff auf eine Vielzahl von Informationen rund um Brettspiele,
@@ -187,25 +219,25 @@ verfügbar sind. Diese API ermöglicht es Entwicklern druch verschiedene Endpoin
 Benutzerkollektionen und Forendiskussionen zuzugreifen. Dabei zu beachten ist, dass die API die Antwort als XML-Format weitergibt. 
 Da häufig mit JSON gearbeitet wird ist eine mögliche Umformung der Daten sinnvoll.
 \subsubsection{Suchfunktion}
-Eine der drei benutzten Endpunkte ist die `/xmlapi/search`-Funktion bei der Nutzer als Input einem spezifischen Suchterm eingeben.
+Eine der drei benutzten Endpunkte ist die „/xmlapi/search“-Funktion, bei der Nutzer als Input einem spezifischen Suchterm eingeben.
 Als Ergebnis enthält man eine Liste an Brettspielen in XML Format, deren Namen oder Alias im Suchbegriff enthalten war.
-Die Suchfunktion Antwort enthält folgende Informationen:
+Die Suchfunktion-Antwort enthält folgende Informationen:
 \begin{itemize}
-    \item {objectId des Brettspiels}
+    \item {\texttt{objectId} des Brettspiels}
     \item {Name des Brettspiels}
     \item {Erscheinungsjahr des Brettspiels}
 \end{itemize}
-Die reale Ausgabe für den fiktiven Suchterm ``Frika'' würde somit folgendes zurückgeben: 
+Die reale Ausgabe für den fiktiven Suchterm „Frika“ würde somit Folgendes zurückgeben: 
 \begin{figure}[h]
     \centering
     \includegraphics[width=1\textwidth]{graphics/Search_API.png}
     \caption{Ergebnis der `/xmlapi/search`-Funktion bei Suchterm Frika.}
     \label{fig:Search_API}
 \end{figure}
-\texttt{Detaillierte Spielinformationen}
-Der zweite Endpunkt ist die `/xmlapi/boardgame/<gameid>`-Funktion und dient dazu,
+\subsubsection{Detaillierte Spielinformationen}
+Der zweite Endpunkt ist die „/xmlapi/boardgame/<gameid>“-Funktion und dient dazu,
 detaillierte Informationen zu einem Brettspiel zu erhalten. Nutzer könnten hier noch einige weitere Parameter mitgeben um spezifische Informationen zu erhalten, jedoch ist dies in unserem Projekt nicht notwendig, da die Ergebnisse schon detailliert genug sind.
-Die gameId ist hierbei der Input, ist gleichzusetzen mit der objectId und kann aus des oben erhaltenen Ergebnisses der Suchfunktion entnommen werden.
+Die \texttt{gameId} ist hierbei der Input, ist gleichzusetzen mit der objectId und kann aus des oben erhaltenen Ergebnisses der Suchfunktion entnommen werden.
 Die detaillierten Spielinformationen enthalten folgende Informationen:
 \begin{table}[H]
     \centering
@@ -247,21 +279,23 @@ Dabei werden genau fünf unterschiedliche Informationen aufgeführt:
     \item yearpublished 
 \end{itemize}
 Im Anschluss kann ebenfalls mit der ObjectId eine Anfrage für detaillierte Informationen gestartet werden. 
-Einsatz findet dieses Verfahren wenn mit einem Klick das Game of the Day ausgewählt wird und somit die zurückgegebene ObjectId auf die Infopage
+Einsatz findet dieses Verfahren wenn mit einem Klick das Spiel des Tages ausgewählt wird und somit die zurückgegebene ObjectId auf die Infopage
 weitergeleitet wird. Somit konnte eine weitere Seite wiederverwendet werden und zudem ein neues Feature für die App ermöglicht. 
 \subsection{MongoDB API}
-In diesem Teil wird nur der externe Aufruf auf den selbsterstellten MongoDB API-Endpunkt behandelt. 
-Der Interne Aufbau der MongoDB wird in der Beschreibung der App aufgeführt. Es gibt insgesamt drei Zugriffsmethoden für jede Collection auf die MongoDB: 
-\texttt{searchGamesWishlist()},
-\texttt{searchGamesInventory()},
-\texttt{addToWishlist(gameData)},
-\texttt{addToInventory(gameData)},
-\texttt{removeFromWishlist(objectId)},
-\texttt{removeFromInventory(objectId)}\bigskip
-Die GET-Methode, hier searchGames..., bezieht sich af den HTTP Endpoint 
-``http://localhost:8999/wishlisht'' oder beziehungsweise ``\ldots/inventory'' und liefert eine Liste aus JSON-Elementen zurück.
+In diesem Teil wird nur der externe Aufruf auf den selbsterstellten MongoDB \ac{API}-Endpunkt behandelt. 
+Der interne Aufbau der MongoDB wird in der Beschreibung der App aufgeführt. Es gibt insgesamt drei Zugriffsmethoden für jede Collection auf die MongoDB: 
+\begin{itemize}
+    \item \texttt{searchGamesWishlist()}
+    \item \texttt{searchGamesInventory()}
+    \item \texttt{addToWishlist(gameData)}
+    \item \texttt{addToInventory(gameData)}
+    \item \texttt{removeFromWishlist(objectId)}
+    \item \texttt{removeFromInventory(objectId)}
+\end{itemize}
+Die GET-Methode, bezieht sich auf den HTTP Endpoint
+\texttt{http://localhost:8999/wishlisht} bzw. \texttt{/inventory} und liefert eine Liste aus JSON-Elementen zurück.
 Für das Hinzufügen von Brettspielen wird die HTTPClient Methode POST benutzt und die gameData übergeben, wobei Gamedata ein Objekt des Modells Boardgame.ts ist. 
-Dieses Objekt wird dann in eine JSON Form in die ausgewählte collection hinzugefügt. Bei der Entfernung eines Spiels wird als Parameter die ObjectId des Spiels übergeben.
+Dieses Objekt wird dann in eine JSON Form in die ausgewählte Collection hinzugefügt. Bei der Entfernung eines Spiels wird als Parameter die ObjectId des Spiels übergeben.
 Dieser einzigartige Klassifikator sorgt dafür, dass wenn ein Spiel in der Collection enthalten ist, dass diese ObjectId als Klassifikator verwendet, wird dieses Brettspiel entfernt.
 Des Weiteren ist dies aus Effizienzgründen vorteilhaft, da kein komplettes Objekt übergeben wird, geparsed werden muss und schlussendlich verglichen. Eine Überprüfung kann direkt stattfinden.
 \begin{center}
@@ -272,15 +306,14 @@ Des Weiteren ist dies aus Effizienzgründen vorteilhaft, da kein komplettes Obje
 
 
 \subsection{Verwendung der APIs im Projekt selbst}
+Die Definition der Methoden zum Aufrufen der \ac{API}-Endpunkte ist in der Datei \\\texttt{board-game.service.ts} des \texttt{services}-Ordner zu finden.
+Dazu wird das HTTPClient Modul importiert und es wird ein htttp.get Aufruf mit den jeweiligen Parametern durchgeführt. Da das Ergebnis in Form einer XML-Datei vorliegt und es vorteilhafter ist mit einem JSON-Format zu arbeiten, wird zu Beginn eine Transformation des Formats in die JSON-Form durchgeführt.
+Dies geschieht konkret durch das importierte Modul „xml2json“. \bigskip 
 
-Die Definition der Methoden zum aufrufen der API-Endpunkte ist in dem   File ``board-game.service.ts'' des ``services''-Ordner zu finden.
-Dazu wird das HTTPClient Modul importiert und es wird ein htttp.get Aufruf mit den jeweiligen Parametern durchgeführt. Da das Ergebnis in Form einer XML-Datei vorliegt und es vorteilhafter ist mit einem JSON-Format zu arbeiten wird zu Beginn eine Transfarmation des Formats in die JSON Form durchgeführt.
-Dies geschieht konkret durch das importierte Modul ``xml2json''. \bigskip 
+Die vorliegende JSON-Datei kann nun dem Modell \texttt{game.ts}, \texttt{boardgame.ts} oder \\\texttt{randomtopgame.ts} zugewiesen werden. Also eine Initialisierung einer Liste von Objekten dieser Modelle basierend auf dem spezifischen \ac{API}-Aufruf.
+Im Folgenden wird dann ein Array als \texttt{return}-Element der Funktion definiert. Dies ermöglicht es erstmalig ein subscribe auf die Funktion zu legen und auf der benötigten Seite anzuzeigen. \bigskip 
 
-Die daraufhin vorliegende JSON kann nun dem Modell game.ts, boardgame.ts oder randomtopgame.ts zugewiesen werden. Also eine initialisierung einer Liste von Objekte dieser Modelle basierend auf dem spezifischen API-Aufruf.
-Im folgenden wird dann Array als return Element der Funktion definiert. Dies ermöglicht es erstmalig ein subscribe auf die Funktion zu legen und auf der benötigten Page anzuzeigen. \bigskip 
-
-Die konkrete Verwendung der APIs ist auf den folgenden Pages ist wiefolgt:
+Die konkrete Verwendung der APIs ist auf den folgenden Pages ist wie folgt:
 
 \begin{itemize}
     \setlength{\itemsep}{-1pt}
@@ -307,5 +340,99 @@ Die konkrete Verwendung der APIs ist auf den folgenden Pages ist wiefolgt:
     \end{itemize}
 
 \end{itemize}
-
+\section{Beschreibung der Docker-Umgebung}
+In der Docker-Umgebung werden vier Services für die Anwendung rund um die Verwaltung
+von Brettspielen definiert. Diese Anwendung verwendet Docker, um die Entwicklung und
+Bereitstellung zu vereinfachen und zu standardisieren. Die Konfiguration umfasst vier
+Hauptdienste: MongoDB-Datenbank, Mongo-Express für die Datenbankverwaltung, einen
+Server für die Kommunikation zwischen Frontend und Datenbank sowie einen Proxy-Server
+für den Zugriff auf die BGG (BoardGameGeek) API, um CORS-Probleme zu vermeiden.
+\subsection{MongoDB-Datenbank}
+Dieser Dienst verwendet das offizielle
+MongoDB-Image und ist so konfiguriert, dass er automatisch neu startet, falls es zu einem
+Fehler kommt.
+Die Umgebungsvariablen \\\texttt{MONGO\_INITDB\_ROOT\_USERNAME} und
+\texttt{MONGO\_INITDB\_ROOT\_PASSWORD} sind auf \texttt{admin} gesetzt, wodurch die Anmeldedaten für
+den Datenbankzugriff definiert sind. Der Dienst nutzt ein Volume \texttt{MONGO\_DATA}, um Daten
+dauerhaft zu speichern und macht den Standard-MongoDB-Port 27017 für andere Dienste
+zugänglich.
+\subsection{Mongo-Express}
+Als webbasiertes Verwaltungstool für
+MongoDB erleichtert Mongo-Express die Verwaltung der Datenbank über einen Webbrowser.
+Es ist ebenfalls so eingestellt, dass es immer neu startet und verwendet die gleichen
+Anmeldeinformationen wie die MongoDB. Dieser Dienst hängt von \texttt{mongo\_boardgame} ab
+und kommuniziert über den internen Netzwerknamen. Mongo-Express ist über den Port 9001
+zugänglich.
+\subsection{Server}
+Dieser Dienst baut einen Server aus einem Dockerfile, das sich im Verzeichnis
+\\\texttt{../assignment\_gruppe\_2\_server} befindet. Der Server dient als Schnittstelle zwischen dem
+Frontend und der MongoDB-Datenbank. Er ist über den Port 8999 erreichbar.
+\subsection{Proxy-Server}
+Der Proxy-Server ermöglicht den sicheren Zugriff auf externe
+APIs, in diesem Fall die BGG \ac{API}, entweder die xmlapi oder die xmlapi2
+\href{https://api.geekdo.com/xmlapi2}{dieser Webseite} (Doku \href{https://boardgamegeek.com/wiki/page/BGG_XML_API2}{hier} abrufbar).
+Der Container wird aus einem Dockerfile gebaut, welches im Verzeichnis des Proxy-Servers liegt. Der
+Dienst ist über den Port 8888 erreichbar und so konfiguriert, dass er stets neu startet.
+\subsection{Volumes}
+Ein definiertes Volume \texttt{MONGO\_DATA} wird verwendet, um die Datenbankdaten
+dauerhaft zu speichern und sicherzustellen, dass diese über den Neustart von Containern
+hinweg erhalten bleiben.
+\subsection{Zusammenfassung}
+Zusammenfassend stellt dieses Docker Compose-Projekt eine vollständige Umgebung für die
+Entwicklung und Bereitstellung der Brettspiel-App bereit. Es automatisiert die Konfiguration
+und Verwaltung von Diensten, die für die Speicherung von Daten, die Verwaltung der
+Datenbank, die Kommunikation mit dem Frontend und den sicheren Zugriff auf externe APIs
+erforderlich sind. Die Server sind intern so konfiguriert das sie vollen Zugriff zulassen, sodass
+keine CORS-Probleme auftreten auch durch das Ansprechen auf dem lokalen Gerät durch den
+Emulator.
+\section{Beschreibung des Proxys und des externen Routings}
+Der Docker-Container mit dem Proxy ist zuständig für die Kommunikation zwischen der App
+und der externen \ac{API}. Dies ist notwendig da der Server hinter der \ac{API} eine direkte Anfrage
+nicht akzeptiert und CORS-Probleme auftreten. Deshalb hilft der Proxyserver, indem dieser
+seine Herkunft verschleiert und Anfragen von der App an die \ac{API} weiterleitet. Dabei gibt es
+drei Suchanfragen, welche die App verwendet:
+\begin{itemize}
+    \item \href{https://api.geekdo.com/xmlapi2/hotoverall}{Diese Anfrage} gibt in XML-Format die 50 bestbewertetsten Brettspiele zurück.
+    \item \href{https://api.geekdo.com/xmlapi/search?search=}{Diese Anfrage} kann nach Spielen suchen, indem hinter den \texttt{search}-Teil der URL ein oder mehrere Buchstaben bzw. Worte gesetzt werden, wodurch nach einem Spiel gesucht werden kann. Es wird eine XML-Datei zurückgegeben, die alle Brettspiele enthält, auf welche die Beschreibung des Searchstring zutrifft. Je ungenauer die Anfrage gestellt wird, desto länger wird auf die Rückmeldung des Servers gewartet, um alle Spiele darzustellen. Ein Beispiel kann \href{https://api.geekdo.com/xmlapi/search?search=to}{hier} geöffnet werden.
+    \item Mit \href{https://api.geekdo.com/xmlapi/boardgame/1&stats=1} {dieser Anfrage} können alle für die App wichtigen Informationen eines Brettspiels aufgerufen werden (inklusive der Statistiken und Bewertungen). Für das Aufrufen dieser Seite ist die ID des Objektes von höchster Relevanz, in dem Beispieladresse sieht man die erste 1, welche auf die ID des Brettspiels verweist. Diese wird durch die ID des gesuchten Spiels ersetzt. Diese ID wird genommen von der Auswahl von den durch die Suche gefundenen Daten oder den Daten, die in Wishlist/Inventory gespeichert sind.
+\end{itemize}
+Das Routing funktioniert ausgehend von der boardgame.service.ts dort wird vom System
+unterschieden ob momentan von einem Emulator/einem Mobilgerät \texttt{http://10.0.2.2:\dots} oder über den
+Lokalhost \texttt{http://localhost:\dots} kommuniziert wird. Dadurch werden die gesamten Pfade an das
+Herkunftssystem angepasst. Eine Anfrage an den Proxy wird dabei mit \texttt{/redirect} durchgeführt. Der
+Proxy hört darauf wenn er angesprochen wird und entfernt das /redirect aus dem Suchstring um die
+Anfrage an die BGG-API weiterzuleiten. Dabei wird der Proxy als Übermittler verwendet und dieser
+gibt beidseitig die Ergebnisse der Anfragen weiter und ermöglicht dadurch eine indirekte
+Kommunikation zwischen Applikation und API-Server.
 \section{Anleitung zum Starten der Applikation}
+Zuerst muss von Git das gesamte Asignment-Gruppe-2 Projekt auf das lokale Gerät gezogen werden.
+Auf diesem lokalen Gerät werden einige Bedingungen vorausgesetzt:
+\begin{enumerate}
+    \item Docker muss bereits existieren.
+    \item \ac{VM} müssen im \ac{BIOS} aktiviert sein.
+    \item Für das Starten der emulierten App auf einem emulierten Endgerät wird ein Emulator vorausgesetzt.
+    \item Eine Internetverbindung ist erforderlich.
+\end{enumerate}
+Wenn all diese Bedingungen erfüllt sind und das Projekt vorliegt, muss eine Kommandozeile/Terminal
+(mit Adminrechten) gestartet werden.
+\begin{enumerate}
+    \item Navigiere auf das Projekt: \\\texttt{cd <derPfad>/assignment-gruppe-2}.
+    \item Installiere die relevanten Paketmodule für die Node-Umgebung: \texttt{npm install}.
+    \item Navigiere auf das Docker-Compose um alle notwenigen Container zu starten: \\\texttt{cd <derPfad>/assignment-gruppe-2/assignment\_gruppe\_2\_mongo\_DB}.
+    \item Führe das Docker-Compose permanent aus um automatisiert die vier Images zu bilden, die für die App benötigt werden: \texttt{docker compose up -d}. Dabei werden die Images gebaut und dann in Docker bereits gestartet, dies sollte für die folgenden Schritte im Terminal oder über eine graphische Ansicht der Docker-Container überprüft werden (siehe Fig. \ref{fig:docker}).
+    \item Navigiere zurück auf das Gesamtprojekt: \\\texttt{cd <derPfad>/assignment-gruppe-2}.
+    \item Möglichkeit 1: Zum Starten von der Applikation im Browser nutze: \texttt{ionic serve}. Dies sollte ein Fenster öffnen mit \url{http://localhost:8100/home}, welches die App anzeigt. Für eine sinnvolle Anzeige lohnt sich das Aktivieren der Mobilgerätesicht.
+    \item Möglichkeit 2: Zum Starten der App auf einem emulierten Endgerät nutze, öffne ein Emulator und starte ein Gerät und spreche es mit dem folgenden Befehl an, um das Spiel auf diesem Gerät zu starten: \\\texttt{ionic cordova run android} (siehe Fig. \ref{fig:emulator}).
+\end{enumerate}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{graphics/docker.png}
+    \caption{Docker-Container nach dem Starten.}
+    \label{fig:docker}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.35\textwidth]{graphics/emulator.png}
+    \caption{Emulator nach dem Starten der App.}
+    \label{fig:emulator}
+\end{figure}

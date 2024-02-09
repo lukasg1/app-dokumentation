@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.31)  9 FEB 2024 18:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.31)  9 FEB 2024 21:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -902,21 +902,21 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 2.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 2.
-)
-\tf@toc=\write5
-\openout5 = `latex-vorlage.toc'.
-
  [2
 
 
-] (./includes/abkuerzungen.tex) [3
+])
+\tf@toc=\write5
+\openout5 = `latex-vorlage.toc'.
+
+ [3] (./includes/abkuerzungen.tex) [4
 
 
 ] (./latex-vorlage.lof)
 \tf@lof=\write6
 \openout6 = `latex-vorlage.lof'.
 
- [4
+ [5
 
 ] (./latex-vorlage.lot
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 9.
@@ -926,7 +926,7 @@ File: t1cmtt.fd 2022/07/10 v2.5l Standard LaTeX font definitions
 \tf@lot=\write7
 \openout7 = `latex-vorlage.lot'.
 
- [5
+ [6
 
 ] (./includes/01_einleitung.tex
 chapter 1.
@@ -943,7 +943,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.1.1}) ha
 l.1 \chapter
             {User Interface Konzept}]
 chapter 2.
-<graphics/konzept.jpeg, id=166, 693.59125pt x 934.49126pt>
+<graphics/konzept.jpeg, id=201, 693.59125pt x 934.49126pt>
 File: graphics/konzept.jpeg Graphic file (type jpg)
 <use graphics/konzept.jpeg>
 Package pdftex.def Info: graphics/konzept.jpeg  used on input line 5.
@@ -963,13 +963,13 @@ Overfull \hbox (21.28888pt too wide) in paragraph at lines 63--64
  []
 
 [6]
-<graphics/infopage.png, id=193, 209.583pt x 442.4895pt>
+<graphics/infopage.png, id=227, 209.583pt x 442.4895pt>
 File: graphics/infopage.png Graphic file (type png)
 <use graphics/infopage.png>
 Package pdftex.def Info: graphics/infopage.png  used on input line 80.
 (pdftex.def)             Requested size: 182.09486pt x 384.45638pt.
  [7]
-<graphics/mockup_vergleich.png, id=202, 498.663pt x 317.112pt>
+<graphics/mockup_vergleich.png, id=237, 498.663pt x 317.112pt>
 File: graphics/mockup_vergleich.png Graphic file (type png)
 <use graphics/mockup_vergleich.png>
 Package pdftex.def Info: graphics/mockup_vergleich.png  used on input line 97.
@@ -1013,47 +1013,61 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.3.6}) ha
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.179 \end{table}
-                 ]
-<graphics/Search_API.png, id=249, 466.74374pt x 89.133pt>
-File: graphics/Search_API.png Graphic file (type png)
-<use graphics/Search_API.png>
-Package pdftex.def Info: graphics/Search_API.png  used on input line 201.
-(pdftex.def)             Requested size: 455.24411pt x 86.94034pt.
-
-Overfull \hbox (24.1944pt too wide) in paragraph at lines 198--235
-\T1/cmr/m/n/10.95 Die rea-le Aus-ga-be für den fik-ti-ven Such-term ``Fri-ka'' wür-de so-mit fol-gen-des zu-rück-ge-ben: \T1/cmtt/m/n/10.95 Detaillierte
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[14
+                 ] [14
 pdfTeX warning (ext4): destination with the same identifier (name{table.3.7}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.235 \end{table}
-                 ] [15
-pdfTeX warning (ext4): destination with the same identifier (name{figure.3.4}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.244     \item r
-                 ank: String (Ranking Position der Top 50 Spiele)
+l.221 \subsubsection
+                    {Suchfunktion}
 pdfTeX warning (ext4): destination with the same identifier (name{table.3.8}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.244     \item r
-                 ank: String (Ranking Position der Top 50 Spiele) <./graphics/Search_API.png>]
-Overfull \hbox (112.98709pt too wide) in paragraph at lines 253--267
-\T1/cmtt/m/n/10.95 searchGamesInventory()\T1/cmr/m/n/10.95 , \T1/cmtt/m/n/10.95 addToWishlist(gameData)\T1/cmr/m/n/10.95 , \T1/cmtt/m/n/10.95 addToInventory(gameData)\T1/cmr/m/n/10.95 , \T1/cmtt/m/n/10.95 removeFromWishlist(objectId)\T1/cmr/m/n/10.95 ,
- []
-
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 268.
-
-Overfull \hbox (19.03809pt too wide) in paragraph at lines 276--279
-\T1/cmr/m/n/10.95 Die De-fi-ni-ti-on der Me-tho-den zum auf-ru-fen der API-Endpunkte ist in dem Fi-le ``board-game.service.ts''
- []
-
-[16]) [17]
+l.221 \subsubsection
+                    {Suchfunktion}]
+<graphics/Search_API.png, id=292, 466.74374pt x 89.133pt>
+File: graphics/Search_API.png Graphic file (type png)
+<use graphics/Search_API.png>
+Package pdftex.def Info: graphics/Search_API.png  used on input line 233.
+(pdftex.def)             Requested size: 455.24411pt x 86.94034pt.
+ [15
+pdfTeX warning (ext4): destination with the same identifier (name{figure.3.4}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.267 \end{table}
+                  <./graphics/Search_API.png>] [16
+pdfTeX warning (ext4): destination with the same identifier (name{table.3.9}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.284 \subsection
+                 {MongoDB API}]
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 302.
+ [17] [18] [19]
+Package acronym Info: Label `acro:VM' newly defined as it shall be overridden
+although it is yet undefined on input line 412.
+Package acronym Info: Label `acro:BIOS' newly defined as it shall be overridden
+although it is yet undefined on input line 412.
+ [20]
+<graphics/docker.png, id=356, 455.301pt x 96.8418pt>
+File: graphics/docker.png Graphic file (type png)
+<use graphics/docker.png>
+Package pdftex.def Info: graphics/docker.png  used on input line 429.
+(pdftex.def)             Requested size: 455.24411pt x 96.83266pt.
+<graphics/emulator.png, id=357, 122.859pt x 258.7266pt>
+File: graphics/emulator.png Graphic file (type png)
+<use graphics/emulator.png>
+Package pdftex.def Info: graphics/emulator.png  used on input line 435.
+(pdftex.def)             Requested size: 159.33821pt x 335.58652pt.
+) [21
+pdfTeX warning (ext4): destination with the same identifier (name{figure.3.5}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.70 \clearpage
+               
+pdfTeX warning (ext4): destination with the same identifier (name{figure.3.6}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.70 \clearpage
+                <./graphics/docker.png> <./graphics/emulator.png>]
 
 LaTeX Warning: Empty bibliography on input line 71.
 
@@ -1065,21 +1079,21 @@ Package logreq Info: Writing requests to 'latex-vorlage.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 27447 strings out of 476025
- 546080 string characters out of 5790017
- 1873388 words of memory out of 5000000
- 47420 multiletter control sequences out of 15000+600000
+ 27517 strings out of 476025
+ 546960 string characters out of 5790017
+ 1872388 words of memory out of 5000000
+ 47455 multiletter control sequences out of 15000+600000
  527499 words of font info for 59 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
- 108i,17n,106p,10670b,2367s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 108i,18n,106p,10670b,2367s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-pdfTeX warning (dest): name{section*.22} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{section*.26} has been referenced but does not exist, replaced by a fixed one
 
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfsl1095.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfsx1095.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfsx1728.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb>
-Output written on latex-vorlage.pdf (22 pages, 1911655 bytes).
+Output written on latex-vorlage.pdf (27 pages, 2090454 bytes).
 PDF statistics:
- 487 PDF objects out of 1000 (max. 8388607)
- 426 compressed objects within 5 object streams
- 112 named destinations out of 1000 (max. 500000)
- 357 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 608 PDF objects out of 1000 (max. 8388607)
+ 537 compressed objects within 6 object streams
+ 145 named destinations out of 1000 (max. 500000)
+ 431 words of extra memory for PDF output out of 10000 (max. 10000000)
 
