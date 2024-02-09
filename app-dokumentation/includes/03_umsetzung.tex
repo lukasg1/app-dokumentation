@@ -161,28 +161,33 @@ Der zweite Endpunkt ist die `/xmlapi/boardgame/<gameid>`-Funktion und dient dazu
 detaillierte Informationen zu einem Brettspiel zu erhalten. Nutzer könnten hier noch einige weitere Parameter mitgeben um spezifische Informationen zu erhalten, jedoch ist dies in unserem Projekt nicht notwendig, da die Ergebnisse schon detailliert genug sind.
 Die gameId ist hierbei der Input, ist gleichzusetzen mit der objectId und kann aus des oben erhaltenen Ergebnisses der Suchfunktion entnommen werden.
 Die detaillierten Spielinformationen enthalten folgende Informationen:
-% Reduzieren des Abstands zwischen den Punkten
-\begingroup
-\setlength{\itemsep}{-1pt} % Setzt den Abstand zwischen den Punkten auf 0pt
-\setlength{\parskip}{-1pt} % Optional: Reduziert den Abstand zwischen Absätzen
-\begin{itemize}
-    \item objectId: String
-    \item yearPublished: String
-    \item minPlayers: String
-    \item maxPlayers: String
-    \item playingTime: String
-    \item minPlayTime: String
-    \item maxPlayTime: String
-    \item age: String
-    \item description: String
-    \item name: Array (String)
-    \item publisher: Array (String)
-    \item averageWeight: String
-    \item averageRating: String
-    \item thumbnail: String (URL to thumbnail image)
-    \item usersRated: String
-\end{itemize}
-\endgroup
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Name} & \textbf{Formattyp} \\
+        \hline
+        \texttt{objectId} & \texttt{String} \\
+        \texttt{yearPublished} & \texttt{String} \\
+        \texttt{minPlayers} & \texttt{String} \\
+        \texttt{maxPlayers} & \texttt{String} \\
+        \texttt{playingTime} & \texttt{String} \\
+        \texttt{minPlayTime} & \texttt{String} \\
+        \texttt{maxPlayTime} & \texttt{String} \\
+        \texttt{age} & \texttt{String} \\
+        \texttt{description} & \texttt{String} \\
+        \texttt{name} & \texttt{Array (String)} \\
+        \texttt{publisher} & \texttt{Array (String)} \\
+        \texttt{averageWeight} & \texttt{String} \\
+        \texttt{averageRating} & \texttt{String} \\
+        \texttt{thumbnail} & \texttt{String (URL to thumbnail image)} \\
+        \texttt{usersRated} & \texttt{String} \\
+        \hline
+    \end{tabular}
+    \caption{Die zurückgegebenen detaillierten Informationen}
+    \label{tab:boardgame_properties}
+\end{table}
 
 Es ist zu erkennen, dass der Name und der Publisher Arrays sind. Dies lässt sich darauf zurückführen, dass es mehrere Namen für dasselbe Spiel gibt (teilweise auch in anderen Sprachen) und mehrere Entwicklet beteiligt sein können.
 
@@ -200,7 +205,9 @@ Dabei werden genau fünf unterschiedliche Informationen aufgeführt:
     \item yearpublished 
 \end{itemize}
 
-Im Anschluss kann ebenfalls mit der ObjectId eine Anfrage für detaillierte Informationen gestartet werden, die dann auf der Infopage angezeigt werden. 
+Im Anschluss kann ebenfalls mit der ObjectId eine Anfrage für detaillierte Informationen gestartet werden. 
+Einsatz findet dieses Verfahren wenn mit einem Klick das Game of the Day ausgewählt wird und somit die zurückgegebene ObjectId auf die Infopage
+weitergeleitet wird. Somit konnte eine weitere Seite wiederverwendet werden und zudem ein neues Feature für die App ermöglicht. 
 
 \subsection{MongoDB API}
 
@@ -209,8 +216,14 @@ Der Interne Aufbau der MongoDB wird in der Beschreibung der App aufgeführt. Es 
 searchGamesWishlist(), searchGamesInventory(), addToWishlist(gameData), addToInventory(gameData), removeFromWishlist(objectId), removeFromInventory(objectId)\bigskip
 
 
-Die Get Methode bezieht sich af den HTTP Endpoint ``http://localhost:8999/wishlisht'' oder beziehungsweise ``\ldots/inventory'' und liefert eine Liste aus JSON-Elementen zurück.
+Die Get Methode, hier searchGames..., bezieht sich af den HTTP Endpoint 
+
+``http://localhost:8999/wishlisht'' oder beziehungsweise ``\ldots/inventory'' und liefert eine Liste aus JSON-Elementen zurück.
 Für das hinzufügen von Brettspielen wird die HTTPClient Methode POST benutzt und die gameData übergeben, wobei Gamedata ein Objekt des Modells Boardgame.ts ist. 
+Dieses Objekt wird dann in eine JSON Form in die ausgewählte collection hinzugefügt. Bei der Entfernung eines Spiels wird als Parameter die ObjectId des Spiels übergeben.
+Dieser einzigartige Klassifikator sorgt dafür, dass wenn ein Spiel in der Collection enthalten ist, dass diese ObjectId als Klassifikator verwendet, wird dieses Brettspiel entfernt.
+Des Weiteren ist dies aus Effizienz gründen vorteilhaft, da kein komplettes Objekt übergeben wird, geparsed werden muss und schlussendlich verglichen. Es kann direkt eine Überprüfung statt finden.
+
 
 \begin{center}
     \begin{lstlisting}[caption={Löschaufruf der MongoDB API}, label=lst:jscode]
@@ -228,7 +241,7 @@ Dies geschieht konkret durch das importierte Modul ``xml2json''. \bigskip
 Die daraufhin vorliegende JSON kann nun dem Modell game.ts, boardgame.ts oder randomtopgame.ts zugewiesen werden. Also eine initialisierung einer Liste von Objekte dieser Modelle basierend auf dem spezifischen API-Aufruf.
 Im folgenden wird dann Array als return Element der Funktion definiert. Dies ermöglicht es erstmalig ein subscribe auf die Funktion zu legen und auf der benötigten Page anzuzeigen. \bigskip 
 
-Die konkrete Verwendung der APIs auf den folgenden Pages ist wiefolgt:
+Die konkrete Verwendung der APIs ist auf den folgenden Pages ist wiefolgt:
 
 \begin{itemize}
     \setlength{\itemsep}{-1pt}
@@ -243,11 +256,15 @@ Die konkrete Verwendung der APIs auf den folgenden Pages ist wiefolgt:
         \end{itemize}
     \item Inventory, Wishlist
         \begin{itemize}
-        \item MongoDB mit `http://localhost:8999/inventory`-Funktion oder `.../wishlist` 
+        \item MongoDB GET mit ``http://localhost:8999/inventory/''-Funktion 
         \end{itemize}
     \item Infopage
     \begin{itemize}
     \item Detaillierte Spielinformationen mit `/xmlapi/boardgame/<gameid>`-Funktion 
+    \item MongoDB mit ``http://localhost:8999/inventory?objectId''-DELETE Funktion
+    \item MongoDB mit ``http://localhost:8999/inventory?gameData''-ADD Funktion
+    \item MongoDB mit ``http://localhost:8999/wishlisht?objectId''-DELETE Funktion
+    \item MongoDB mit ``http://localhost:8999/wishlisht?gameData''-ADD Funktion
     \end{itemize}
 
 \end{itemize}
